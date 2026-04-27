@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --background: #111111;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-brand: #d891ef;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-logo-ring: #50c2dc;
+  --color-logo-swoop: #de5b5b;
+  --font-sans: var(--font-archivo);
+  --font-strong: var(--font-tasa-orbiter);
+  --font-mono: var(--font-major-mono);
+  --font-cursive: var(--font-pacifico);
+  --scrollbar-color-thumb: #ffffff;
+  --scrollbar-color-track: #000000;
+  --scrollbar-width: none;
+  --scrollbar-width-legacy: 0px;
+}
+
+@layer base {
+  strong, h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-tasa-orbiter);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Modern browsers with `scrollbar-*` support */
+@supports (scrollbar-width: auto) {
+  * {
+      scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
+      scrollbar-width: var(--scrollbar-width);
+  }
+}
+
+/* Legacy browsers with `::-webkit-scrollbar-*` support */
+@supports selector(::-webkit-scrollbar) {
+  ::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-color-thumb);
+  }
+  ::-webkit-scrollbar-track {
+      background: var(--scrollbar-color-track);
+  }
+  ::-webkit-scrollbar {
+      max-width: var(--scrollbar-width-legacy);
+      max-height: var(--scrollbar-width-legacy);
+  }
+}
