@@ -12,7 +12,7 @@ export function MainContent() {
           <p>yoori dot space</p>
           <p>internet experience</p>
         </header>
-        <main className="flex-1 flex items-center justify-center portrait:px-8">
+        <main className="w-full flex-1 flex items-center justify-center portrait:px-8">
           <Logo />
         </main>
         <footer className="flex gap-2 p-4 justify-center font-mono text-lg">

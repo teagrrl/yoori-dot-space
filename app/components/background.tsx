@@ -16,7 +16,7 @@ const MISC_TICKER = "I WAS THINKING ABOUT DOING A LITTLE BIT OF USER AGENT SNIFF
 export function Background() {
   return (
     <motion.div
-      className="-z-10 absolute w-full h-full flex flex-col justify-between gap-2 text-white/5 select-none blur-xs"
+      className="-z-10 fixed w-full h-full flex flex-col justify-between gap-2 text-white/5 select-none blur-xs"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
