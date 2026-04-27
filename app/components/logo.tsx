@@ -109,27 +109,25 @@ export function Logo() {
             <ellipse cx="39.4" cy="72.7" rx="2" ry="4" stroke="none" fill="white" />
           </motion.g>
         </g>
-      </g>
-      <motion.g
-        filter="url(#glow)"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.25, duration: 0.4, ease: "easeInOut" }}
-      >
-        <text
-          fill="white"
-          x="54"
-          y="60"
-          height="2em"
-          textAnchor="middle"
-          fontSize="1.7em"
-          fontStyle="italic"
-          fontFamily="var(--font-pacifico)"
-          suppressHydrationWarning
+        <motion.g
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.25, duration: 0.4, ease: "easeInOut" }}
         >
-          yoori
-        </text>
-      </motion.g>
+          <text
+            fill="white"
+            x="54"
+            y="60"
+            
+            textAnchor="middle"
+            fontSize="1.7em"
+            fontStyle="italic"
+            fontFamily="var(--font-pacifico)"
+          >
+            &nbsp;&nbsp;yooori&nbsp;&nbsp;
+          </text>
+        </motion.g>
+      </g>
     </motion.svg>
   )
 }
