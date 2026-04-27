@@ -15,7 +15,7 @@ export function Logo() {
   }
 
   return (
-    <svg className="select-none" viewBox="0 0 110 110">
+    <motion.svg className="w-full h-full select-none" viewBox="0 0 110 110">
       <filter id="glow">
         <feFlood floodColor="white" floodOpacity="0.2" in="SourceGraphic" />
         <feComposite operator="in" in2="SourceGraphic" />
@@ -141,6 +141,6 @@ export function Logo() {
           {name}
         </text>
       </motion.g>
-    </svg>
+    </motion.svg>
   )
 }
