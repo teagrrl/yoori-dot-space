@@ -1,19 +1,8 @@
 "use client"
 
 import { motion } from "motion/react"
-import { useState } from "react"
 
 export function Logo() {
-  const [randNum] = useState<number>(() => Math.random())
-  let name
-  if (randNum > 0.7) {
-    name = "yoooori"
-  } else if (randNum > 0.4) {
-    name = "yooori"
-  } else { 
-    name = "yoori"
-  }
-
   return (
     <motion.svg className="w-full h-full select-none" viewBox="0 0 110 110">
       <filter id="glow">
@@ -138,7 +127,7 @@ export function Logo() {
           fontFamily="var(--font-pacifico)"
           suppressHydrationWarning
         >
-          {name}
+          yoori
         </text>
       </motion.g>
     </motion.svg>
