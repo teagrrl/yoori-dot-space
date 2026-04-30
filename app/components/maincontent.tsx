@@ -25,6 +25,20 @@ export function MainContent() {
           <span>&bull;</span>
           <Link
             className="hover:uppercase hover:text-brand transition-all"
+            href="/for-dumb-ideas"
+          >
+            directory
+          </Link>
+          {/* <span>&bull;</span>
+          <Link
+            className="hover:uppercase hover:text-brand transition-all"
+            href="https://twitter.com/yoorilikeglass"
+          >
+            twitter
+          </Link> */}
+          <span>&bull;</span>
+          <Link
+            className="hover:uppercase hover:text-brand transition-all"
             href="https://bsky.app/profile/yoori.space"
           >
             bsky

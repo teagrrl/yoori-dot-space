@@ -1,0 +1,95 @@
+import { BaseStatsModel, PokemonPoolStats } from "@/data/pokemon"
+import { Chart, LineElement, PointElement, RadialLinearScale, Filler, Tooltip } from "chart.js"
+import { Radar } from "react-chartjs-2"
+
+const radarColor = "rgb(191, 155, 16)"
+const radarBackgroundColor = "rgba(191, 155, 6, 0.2)"
+const radarBorderColor = "rgb(255, 255, 255)"
+const gridColor = "rgba(255, 255, 255, 0.1)"
+
+Chart.register(LineElement, PointElement, RadialLinearScale, Filler, Tooltip)
+
+type DetailsRadarProps = {
+  stats: BaseStatsModel
+  pool?: PokemonPoolStats
+}
+
+export function DetailsRadar({ stats, pool }: DetailsRadarProps) {
+  const labels = ["HP", "Attack", "Defense", "Speed", ["Special", "Defense"], ["Special", "Attack"]]
+  const max = pool ? [
+    pool.hp.length > 0 ? Math.max(...pool.hp) : 100,
+    pool.attack.length > 0 ? Math.max(...pool.attack) : 100,
+    pool.defense.length > 0 ? Math.max(...pool.defense) : 100,
+    pool.speed.length > 0 ? Math.max(...pool.speed) : 100,
+    pool.specialDefense.length > 0 ? Math.max(...pool.specialDefense) : 100,
+    pool.specialAttack.length > 0 ? Math.max(...pool.specialAttack) : 100,
+  ] : undefined
+  const values = [
+    stats.hp,
+    stats.attack,
+    stats.defense,
+    stats.speed,
+    stats.specialDefense,
+    stats.specialAttack,
+  ]
+  const adjustedValues = max ? values.map((value, index) => value / max[index] * 100) : values
+
+  return (
+    <div className="relative">
+      {/*<div className="absolute top-0 right-0 px-2 py-0.5 rounded-md text-sm bg-gray-600 cursor-pointer">?</div>*/}
+      <Radar
+        height={200}
+        width={250}
+        options={{
+          maintainAspectRatio: false,
+          responsive: true,
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: (context) => values[context.dataIndex].toLocaleString()
+              }
+            }
+          },
+          scales: {
+            r: {
+              pointLabels: {
+                font: {
+                  size: 12,
+                },
+                color: "rgb(255, 255, 255)",
+              },
+              angleLines: {
+                color: gridColor,
+                lineWidth: 2,
+              },
+              ticks: {
+                count: 5,
+                display: false,
+              },
+              grid: {
+                color: gridColor,
+              },
+              min: 0,
+              max: 100,
+            }
+          },
+        }}
+        data={{
+          labels,
+          datasets: [{
+            data: adjustedValues,
+            fill: true,
+            borderWidth: 2,
+            pointBorderWidth: 1,
+            borderColor: radarColor,
+            backgroundColor: radarBackgroundColor,
+            pointBorderColor: radarBorderColor,
+            pointBackgroundColor: radarColor,
+            pointHoverBorderColor: radarColor,
+            pointHoverBackgroundColor: radarBorderColor,
+          }]
+        }}
+      />
+    </div>
+  )
+}

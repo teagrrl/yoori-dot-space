@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 import { Archivo, Major_Mono_Display, TASA_Orbiter, Pacifico } from "next/font/google"
-import { Analytics } from '@vercel/analytics/next'
 import "@/globals.css"
 
 const tasaOrbiter = TASA_Orbiter({
   variable: "--font-tasa-orbiter",
+  fallback: ["Arial", "sans-serif"],
 })
 
 const archivo = Archivo({
@@ -29,10 +29,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={`${tasaOrbiter.variable} ${archivo.variable} ${majorMono.variable} ${pacifico.variable} antialiased`}>
         {children}
-        <Analytics />
       </body>
     </html>
   )
